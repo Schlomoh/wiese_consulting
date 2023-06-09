@@ -9,9 +9,10 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npx gh-pages -d dist"
   },
   "dependencies": {
+    "@schlomoh/react-cookieconsent": "^1.6.1",
     "framer-motion": "^10.12.16",
     "p5": "^1.6.0",
     "react": "^18.2.0",
