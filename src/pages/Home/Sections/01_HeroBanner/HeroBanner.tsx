@@ -12,7 +12,7 @@ import {
 
 const StyledBanner = styled.header`
   min-height: calc(80vh + ${({ theme }) => theme.misc.navBar.height});
-  width: 100vw;
+  width: 100%;
 
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.accent.blue};
@@ -36,6 +36,7 @@ const TextContainer = styled.div`
 
   ::before {
     z-index: 0;
+    left: 0;
     content: "";
     display: block;
     position: absolute;
@@ -58,7 +59,7 @@ const ImageWrapper = styled.div`
   .react-p5,
   .p5Canvas {
     height: calc(100% + 50px);
-    width: calc(100% + 50px);
+    width: 100%;
   }
 `;
 
@@ -163,7 +164,7 @@ const useCreateSketch = () => {
 };
 
 const HeroBanner = () => {
-  const bannerRef = useRef<HTMLElement | null>(null);
+  const bannerRef = useRef<HTMLDivElement | null>(null);
   const observer = useIntersection(bannerRef, { root: null, threshold: 0.01 });
   const { setIsAtTop } = useContext(NavBarContext);
 
