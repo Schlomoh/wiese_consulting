@@ -1,3 +1,4 @@
+export { Footer } from "./Footer";
 export { GridContainer } from "./Grid";
 export { NavBar, NavBarContextProvider, NavBarContext } from "./NavBar";
 export { Section } from "./Section";

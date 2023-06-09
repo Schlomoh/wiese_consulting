@@ -5,6 +5,7 @@ interface GridContainerProps {
   breakWidth?: number;
   alignItems?: CSSProperties["alignItems"];
   justifyContent?: CSSProperties["justifyContent"];
+  flexDirection?: CSSProperties["flexDirection"];
   gap?: CSSProperties["gap"];
   height?: CSSProperties["height"];
 }
@@ -15,7 +16,7 @@ const GridContainer = styled.div<GridContainerProps>`
   min-height: inherit;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: ${({ flexDirection }) => flexDirection || "row"};
   justify-content: ${({ justifyContent }) => justifyContent || "space-between"};
   gap: ${({ gap }) => gap || "2rem"};
   align-items: ${({ alignItems }) => alignItems || "initial"};

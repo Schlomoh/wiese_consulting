@@ -8,6 +8,7 @@ interface ParagraphProps {
 }
 
 const Paragraph = styled.p<ParagraphProps>`
+  width: fit-content;
   margin: ${({ margin }) => margin || 0};
   padding: ${({ padding }) => padding || 0};
   color: ${({ color, theme }) =>

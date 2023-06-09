@@ -19,9 +19,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background-color: ${({ theme }) => theme.colors.accent.blue};
 
+  }
+  * {
     font-family: Poppins, sans-serif;
   }
-
   h1 {
     font-size: calc(1.618rem * 3);
     font-family: Oswald, sans-serif;

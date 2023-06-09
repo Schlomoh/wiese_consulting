@@ -6,6 +6,7 @@ interface SectionProps {
 }
 
 const Section = styled.section<SectionProps>`
+  position: relative;
   padding: ${({ padding }) => padding || "6rem 2rem"};
 
   background-color: ${({ theme }) => theme.colors.base.white};

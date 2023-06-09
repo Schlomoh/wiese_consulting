@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 import { useIntersection } from "react-use";
 import styled from "styled-components";
 import Sketch from "react-p5";
-import p5Types from "p5";
+import p5Types from "react-p5/node_modules/@types/p5";
 import {
   NavBarContext,
   GridContainer,
@@ -10,7 +10,7 @@ import {
   Paragraph,
 } from "@/components";
 
-const StyledBanner = styled.section`
+const StyledBanner = styled.header`
   min-height: calc(80vh + ${({ theme }) => theme.misc.navBar.height});
   width: 100vw;
 
@@ -18,6 +18,11 @@ const StyledBanner = styled.section`
   background-color: ${({ theme }) => theme.colors.accent.blue};
   margin-bottom: -50px;
 `;
+
+// replacement type for p5 to avoid ts error bug on 'clear' method
+type FixedP5 = p5Types & {
+  clear: () => void;
+};
 
 const TextContainer = styled.div`
   width: calc(100% - 4rem);
@@ -30,13 +35,18 @@ const TextContainer = styled.div`
   }
 
   ::before {
+    z-index: 0;
     content: "";
     display: block;
     position: absolute;
-    height: 300px;
+    height: 600px;
     width: 50%;
     background-color: ${({ theme }) => theme.colors.accent.blue};
-    filter: blur(120px);
+    filter: blur(150px);
+
+    @media screen and (max-width: 720px) {
+      width: 100%;
+    }
   }
 `;
 
@@ -72,7 +82,7 @@ interface RectData {
 }
 
 const useCreateSketch = () => {
-  const squareSize = 50;
+  const squareSize = 80;
   const squareGap = 2;
 
   const dimensions = useRef({ width: 0, height: 0 });
@@ -97,7 +107,7 @@ const useCreateSketch = () => {
             alpha:
               normalize(0, window.innerWidth, xCoord) *
               (Math.random() * 2 + 2) *
-              120,
+              100,
           },
         ];
       } else return tempColumn;
@@ -136,12 +146,12 @@ const useCreateSketch = () => {
     rectGrid.current = createRects(window.innerWidth, window.innerHeight);
   };
 
-  const draw = (p5: p5Types) => {
-    p5.clear(255, 255, 255, 255);
+  const draw = (p5: FixedP5) => {
+    p5.clear();
 
     rectGrid.current.forEach((xAxis, xCoord) =>
       xAxis.forEach((rect, y) => {
-        rect.time += (p5.deltaTime / 2000) * rect.speed;
+        rect.time += (p5.deltaTime / 4000) * rect.speed;
         p5.noStroke();
         p5.fill(255, 255, 255, rect.alpha * Math.abs(Math.sin(rect.time)));
         p5.rect(rect.x, rect.y, squareSize, squareSize, 10, 10, 10, 10);
@@ -149,7 +159,7 @@ const useCreateSketch = () => {
     );
   };
 
-  return [setup, draw] as [typeof setup, typeof draw];
+  return { setup, draw };
 };
 
 const HeroBanner = () => {
@@ -157,7 +167,7 @@ const HeroBanner = () => {
   const observer = useIntersection(bannerRef, { root: null, threshold: 0.01 });
   const { setIsAtTop } = useContext(NavBarContext);
 
-  const [setup, draw] = useCreateSketch();
+  const { setup, draw } = useCreateSketch();
 
   useEffect(() => {
     if (observer) setIsAtTop(observer.isIntersecting);

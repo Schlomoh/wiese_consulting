@@ -19,14 +19,14 @@ const ProductContainer = styled.div`
   }
 `;
 
-const Product = () => {
+const Product = ({ title }: { title: string }) => {
   const { colors } = useTheme();
   return (
     <ProductContainer>
       <IconContext.Provider value={{ color: colors.grey.light, size: "150px" }}>
         <AiOutlineInbox />
       </IconContext.Provider>
-      <h3>Product 1</h3>
+      <h3>{title}</h3>
       <Paragraph color="grey">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint id, quasi
         facilis dolore accusamus sapiente ad eaque vitae, ipsum numquam, aut ea?
@@ -42,9 +42,9 @@ const Products = () => {
       <StyledSection>
         <h2>Unsere Säulen</h2>
         <GridContainer>
-          <Product />
-          <Product />
-          <Product />
+          <Product title="KOPS/ICON Support" />
+          <Product title="Data Development" />
+          <Product title="Scrum / Agile Beratung" />
         </GridContainer>
       </StyledSection>
     </>

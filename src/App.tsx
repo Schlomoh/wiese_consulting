@@ -1,4 +1,9 @@
-import { NavBar, NavBarContextProvider, ThemeProvider } from "@/components";
+import {
+  Footer,
+  NavBar,
+  NavBarContextProvider,
+  ThemeProvider,
+} from "@/components";
 import { Home } from "./pages";
 
 function App() {
@@ -7,6 +12,7 @@ function App() {
       <ThemeProvider>
         <NavBar />
         <Home />
+        <Footer />
       </ThemeProvider>
     </NavBarContextProvider>
   );

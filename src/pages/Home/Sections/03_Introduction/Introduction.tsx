@@ -99,7 +99,7 @@ const TiniInfo = () => {
 const Introduction = () => {
   return (
     <Section style={{ position: "relative", zIndex: 1 }}>
-      <h2>Wer wir sinds</h2>
+      <h2>Wer wir sind</h2>
       <GridContainer gap="8rem">
         <PetraIntro />
         <TiniInfo />
