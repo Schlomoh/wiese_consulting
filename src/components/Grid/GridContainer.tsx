@@ -22,7 +22,7 @@ const GridContainer = styled.div<GridContainerProps>`
   align-items: ${({ alignItems }) => alignItems || "initial"};
 
   @media screen and (max-width: ${({ breakWidth }) => breakWidth || 720}px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 `;
 

@@ -1,4 +1,4 @@
-import { GridContainer, Paragraph, Section } from "@/components";
+import { GridContainer, Paragraph, Section, SubHeading } from "@/components";
 import styled from "styled-components";
 
 const EndSection = styled(Section)`
@@ -38,6 +38,7 @@ const ButtonContainer = styled(CtaContainer)`
 const CallToAction = () => {
   return (
     <EndSection>
+      <SubHeading>Wir sind für sie da.</SubHeading>
       <GridContainer flexDirection="row-reverse">
         <CtaContainer
           style={{ justifyContent: "space-around", alignItems: "center" }}
@@ -51,7 +52,6 @@ const CallToAction = () => {
           <Paragraph color="grey"> E-mail: wiese@consluting.test</Paragraph>
         </CtaContainer>
         <CtaContainer>
-          <h2>Rufen sie gerne an.</h2>
           <Paragraph color="grey">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
             expedita, beatae architecto aut quaerat tempora libero aliquam

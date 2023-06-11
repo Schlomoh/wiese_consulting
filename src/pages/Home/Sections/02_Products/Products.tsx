@@ -1,14 +1,21 @@
 import styled, { useTheme } from "styled-components";
+import { motion } from "framer-motion";
 import { IconContext } from "react-icons";
 import { AiOutlineInbox } from "react-icons/ai";
-import { GridContainer, Paragraph, Section } from "@/components/";
+import {
+  GridContainer,
+  Paragraph,
+  Section,
+  SubHeading,
+  useStaggeredFade,
+} from "@/components/";
 
 const StyledSection = styled(Section)`
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
 `;
 
-const ProductContainer = styled.div`
+const ProductContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,7 +29,7 @@ const ProductContainer = styled.div`
 const Product = ({ title }: { title: string }) => {
   const { colors } = useTheme();
   return (
-    <ProductContainer>
+    <ProductContainer className="product-container">
       <IconContext.Provider value={{ color: colors.grey.light, size: "150px" }}>
         <AiOutlineInbox />
       </IconContext.Provider>
@@ -37,11 +44,14 @@ const Product = ({ title }: { title: string }) => {
 };
 
 const Products = () => {
+  const { scope, observedElement } = useStaggeredFade([".product-container"]);
+
   return (
     <>
-      <StyledSection>
-        <h2>Unsere Säulen</h2>
-        <GridContainer>
+      <StyledSection ref={observedElement}>
+        <SubHeading>Unsere Säulen</SubHeading>
+
+        <GridContainer ref={scope}>
           <Product title="KOPS/ICON Support" />
           <Product title="Data Development" />
           <Product title="Scrum / Agile Beratung" />

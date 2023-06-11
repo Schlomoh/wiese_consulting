@@ -1,12 +1,9 @@
 import styled, { useTheme } from "styled-components";
 
 import { SvgWrapper } from "@/components/SvgWrapper";
-import { SmallLogo } from "../Logos";
 import { BigLogo } from "../Logos";
-import { useIntersection } from "react-use";
 import { NavBarContext, useNavBarContext } from "./NavBarContext";
-import { useContext, useEffect, useRef, useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { useContext } from "react";
 
 interface StyledNavProps {
   atTop: boolean;
@@ -21,7 +18,7 @@ const StyledNav = styled.nav<StyledNavProps>`
   overflow: hidden;
 
   // size
-  width: 100vw;
+  width: 100%;
   height: ${({ theme }) => theme.misc.navBar.height};
 
   // color
@@ -67,23 +64,13 @@ const Links = () => {
 };
 
 const ScrollCheck = styled.div`
-  width: 100vw;
+  width: 100%;
   height: ${({ theme }) => theme.misc.navBar.height};
 `;
 
 const NavBar = () => {
   const { isAtTop } = useContext(NavBarContext);
   const { colors } = useTheme();
-  const [scrolled, setScrolled] = useState(false);
-
-  const scrollCheckElement = useRef<null | HTMLDivElement>(null);
-  const observer = useIntersection(scrollCheckElement, { threshold: 0.01 });
-
-  useEffect(() => {
-    if (!observer) return;
-
-    setScrolled(!observer.isIntersecting);
-  }, [observer?.isIntersecting]);
 
   return (
     <>
@@ -99,7 +86,7 @@ const NavBar = () => {
           <Links />
         </NavContentContainer>
       </StyledNav>
-      <ScrollCheck ref={scrollCheckElement} />
+      <ScrollCheck />
     </>
   );
 };
