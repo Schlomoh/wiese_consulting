@@ -19,8 +19,11 @@ const theme: DefaultTheme = {
   misc: {
     boxShadow: "0 .5rem 1.5rem rgba(0,0,0,0.15)",
     navBar: {
-        height: '4rem'
-    }
+      height: "4rem",
+    },
+    section: {
+      borderRadius: "25px",
+    },
   },
 };
 

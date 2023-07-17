@@ -7,7 +7,7 @@ const useStaggeredFade = (selectors: string[]) => {
   const observedElement = useRef<HTMLElement>(null);
   const [isVisible, setVisible] = useState(false);
   const observer = useIntersection(observedElement, {
-    rootMargin: "-200px 0px",
+    rootMargin: "-50px 0px",
   });
 
   useEffect(() => {

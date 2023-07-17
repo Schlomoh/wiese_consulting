@@ -73,12 +73,14 @@ const HeroBanner = () => {
             Expertise und Erfahrung für Ihre Projekte
           </Headline>
           <Divider />
-          <Paragraph margin=".5rem 0 0 ">
+          <Paragraph margin="1.5rem 0 0 ">
             Unsere strategischen Consulting-Lösungen sind darauf ausgerichtet,
-            erfolgreiche Transformationen zu ermöglichen. Wir bieten unseren
-            Kunden eine umfassende Beratung bei der Umsetzung von
-            Veränderungsprozessen, von der Erstellung einer Strategie bis hin
-            zur Implementierung von Maßnahmen.
+            erfolgreiche Transformationen zu ermöglichen.
+          </Paragraph>
+          <Paragraph margin=".5rem 0 0">
+            Wir bieten unseren Kunden eine umfassende Beratung bei der Umsetzung
+            von Veränderungsprozessen, von der Erstellung einer Strategie bis
+            hin zur Implementierung von Maßnahmen.
           </Paragraph>
         </TextContainer>
         <div style={{ width: "100%" }} />

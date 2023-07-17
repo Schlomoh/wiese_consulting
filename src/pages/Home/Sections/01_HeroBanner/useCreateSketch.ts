@@ -76,8 +76,9 @@ function useCreateSketch() {
     const timeScalar = (time: number) => Math.abs(Math.sin(time));
 
     rectGrid.current.forEach((xAxis) =>
-      xAxis.forEach((rect, y) => {
-        rect.time += (p5.deltaTime / 4000) * rect.speed;
+      xAxis.forEach((rect) => {
+        const timeStep = (p5.deltaTime / 1000 / 2) * rect.speed; // time in ms / 1000 / scalar * [0 - 1]
+        rect.time += timeStep;
         current.noStroke();
         current.fill(255, 255, 255, rect.alpha * timeScalar(rect.time));
         current.rect(rect.x, rect.y, SQUARE_SIZE, SQUARE_SIZE, 10, 10, 10, 10);

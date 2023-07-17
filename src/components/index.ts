@@ -1,7 +1,11 @@
 export { useStaggeredFade } from "./Animation";
+export { BasePage } from "./BasePage";
+export { CookieBanner } from "./CookieBanner";
 export { Footer } from "./Footer";
 export { GridContainer } from "./Grid";
+export { SmallLogo, BigLogo } from "./Logos";
 export { NavBar, NavBarContextProvider, NavBarContext } from "./NavBar";
+export { PageTransitioner } from "./PageTransitioner";
 export { Section } from "./Section";
 export { SvgWrapper } from "./SvgWrapper";
 export { ThemeProvider } from "./Theme";

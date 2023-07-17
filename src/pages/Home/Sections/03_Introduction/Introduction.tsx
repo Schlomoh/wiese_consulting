@@ -9,13 +9,7 @@ import styled from "styled-components";
 
 import imgTini from "@/assets/headshot_tini.jpeg";
 import imgPetra from "@/assets/headshot_petra.jpeg";
-import {
-  ElementRef,
-  LegacyRef,
-  MutableRefObject,
-  ReactNode,
-  RefObject,
-} from "react";
+import { MutableRefObject, ReactNode } from "react";
 
 const ImageWrapper = styled.div`
   width: 100%;

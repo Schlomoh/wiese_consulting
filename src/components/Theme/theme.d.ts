@@ -24,6 +24,9 @@ declare module "styled-components" {
       navBar: {
         height: CSSProperties["height"];
       };
+      section: {
+        borderRadius: CSSProperties["borderRadius"];
+      };
     };
   }
 }

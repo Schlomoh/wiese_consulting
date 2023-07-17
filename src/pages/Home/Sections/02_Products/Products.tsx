@@ -8,11 +8,11 @@ import {
   Section,
   SubHeading,
   useStaggeredFade,
-} from "@/components/";
+} from "@/components";
 
 const StyledSection = styled(Section)`
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+  border-top-left-radius: ${({ theme }) => theme.misc.section.borderRadius};
+  border-top-right-radius: ${({ theme }) => theme.misc.section.borderRadius};
 `;
 
 const ProductContainer = styled(motion.div)`

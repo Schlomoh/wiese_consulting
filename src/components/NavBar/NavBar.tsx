@@ -1,9 +1,10 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
 
-import { SvgWrapper } from "@/components/SvgWrapper";
-import { BigLogo } from "../Logos";
-import { NavBarContext, useNavBarContext } from "./NavBarContext";
-import { useContext } from "react";
+import { SvgWrapper, BigLogo } from "@/components";
+import { NavBarContext } from "./NavBarContext";
+import { routes } from "@/App";
 
 interface StyledNavProps {
   atTop: boolean;
@@ -45,6 +46,7 @@ const NavContentContainer = styled.div`
 
 const LinkContainer = styled.span<StyledNavProps>`
   a {
+    text-transform: capitalize;
     margin-left: 1rem;
     color: ${({ atTop, theme }) =>
       atTop ? theme.colors.base.white : theme.colors.accent.blue};
@@ -53,18 +55,19 @@ const LinkContainer = styled.span<StyledNavProps>`
 
 const Links = () => {
   const { isAtTop } = useContext(NavBarContext);
+  const capitalize = (string: string) =>
+    string.charAt(0).toUpperCase() + string.slice(1);
 
-  return (
-    <LinkContainer atTop={isAtTop}>
-      <a>Home</a>
-      <a>Contact</a>
-      <a>About</a>
-    </LinkContainer>
-  );
+  const links = routes.map((route) => (
+    <Link to={route.path || ""} key={route.path}>
+      {route.path === "/" ? "Home" : capitalize(route.path!)}
+    </Link>
+  ));
+
+  return <LinkContainer atTop={isAtTop}>{links}</LinkContainer>;
 };
 
-const ScrollCheck = styled.div`
-  width: 100%;
+const Offset = styled.div`
   height: ${({ theme }) => theme.misc.navBar.height};
 `;
 
@@ -76,17 +79,19 @@ const NavBar = () => {
     <>
       <StyledNav atTop={isAtTop}>
         <NavContentContainer>
-          <SvgWrapper
-            height="3rem"
-            color={isAtTop ? colors.base.white : colors.accent.blue}
-          >
-            <BigLogo />
-          </SvgWrapper>
+          <Link to="">
+            <SvgWrapper
+              height="3rem"
+              color={isAtTop ? colors.base.white : colors.accent.blue}
+            >
+              <BigLogo />
+            </SvgWrapper>
+          </Link>
           <div style={{ flexGrow: 1 }} />
           <Links />
         </NavContentContainer>
       </StyledNav>
-      <ScrollCheck />
+      <Offset />
     </>
   );
 };
